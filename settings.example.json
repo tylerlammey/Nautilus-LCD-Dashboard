@@ -1,0 +1,38 @@
+{
+  "theme": {
+    "bg": "#05090f",
+    "ink": "#f3f7ff",
+    "cpu": "#45d9ff",
+    "gpu": "#ba8cff",
+    "ai": "#6de5ad"
+  },
+  "remaining": true,
+  "rotation": 0,
+  "brightness": 100,
+  "lcd_enabled": true,
+  "close_icue_on_start": true,
+  "temperature_range": {
+    "min_c": 20,
+    "max_c": 100
+  },
+  "codex_activity": {
+    "enabled": true,
+    "active_color": "#6de5ad",
+    "idle_color": "#344052",
+    "unknown_color": "#d6aa66",
+    "radius": 8,
+    "poll_interval_seconds": 2
+  },
+  "layout": {
+    "temperature_font_size": 54,
+    "usage_font_size": 24,
+    "label_font_size": 24,
+    "quota_font_size": 34,
+    "quota_label_font_size": 19,
+    "hardware_ring_radius": 85,
+    "quota_ring_radius": 62,
+    "hardware_ring_width": 11,
+    "quota_ring_width": 8,
+    "show_reset_times": false
+  }
+}

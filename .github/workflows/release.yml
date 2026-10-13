@@ -1,0 +1,36 @@
+name: Source release
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+          architecture: x64
+      - run: python -m pip install -r requirements.txt
+      - run: python -m unittest discover -s tests -v
+      - run: python tools/check_release.py
+      - run: python tools/build_release.py
+      - uses: actions/upload-artifact@v7
+        with:
+          name: nautilus-dashboard-source
+          path: dist/*
+      - name: Publish tagged source ZIP
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: pwsh
+        run: |
+          $version = (Get-Content VERSION -Raw).Trim()
+          if ($env:GITHUB_REF_NAME -ne "v$version") { throw 'Tag does not match VERSION.' }
+          gh release create "$env:GITHUB_REF_NAME" "dist/nautilus-dashboard-$version-source.zip" "dist/nautilus-dashboard-$version-source.zip.sha256" --title "Nautilus Dashboard $version" --generate-notes

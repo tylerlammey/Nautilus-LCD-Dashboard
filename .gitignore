@@ -1,0 +1,23 @@
+.venv/
+runtime/
+vendor/
+__pycache__/
+*.pyc
+dist/
+build/
+settings.json
+*.lnk
+*.tmp
+.env
+.env.*
+!.env.example
+.codex/
+.agents/
+.aws/
+auth.json
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+# Original design mockups are local reference files, not the shipped app.
+preview.html
+radial.html
