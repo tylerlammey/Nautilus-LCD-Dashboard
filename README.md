@@ -173,9 +173,9 @@ The source ZIP and SHA-256 file appear in `dist/`. An explicit file list keeps
 generated data and credentials out of releases. `tools/render_example.py`
 regenerates the README image with sample readings.
 
-GitHub Actions runs Windows tests and creates source artifacts. For a public
-release, update `VERSION` and `CHANGELOG.md`, commit the public files, then push
-a matching tag such as `v1.0.0`. The release workflow attaches the source ZIP
+GitHub Actions only packages source releases; tests are optional local checks.
+For a public release, update `VERSION` and `CHANGELOG.md`, commit the public files,
+then push a matching tag such as `v1.0.0`. The release workflow attaches the source ZIP
 and checksum. Manual workflow runs only build artifacts. This source download
 requires Python; it is not a standalone EXE.
 

@@ -16,7 +16,7 @@ FILES = (
     "tools/create_icons.py", "tools/create_shortcuts.ps1", "tools/render_example.py",
     "tools/build_release.py", "tools/check_release.py",
     "tests/test_core.py", "tests/test_settings.py", "tests/test_activity.py", "tests/test_release.py",
-    ".github/workflows/ci.yml", ".github/workflows/release.yml",
+    ".github/workflows/release.yml",
 )
 
 
