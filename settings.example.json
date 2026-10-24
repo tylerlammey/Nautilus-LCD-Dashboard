@@ -33,6 +33,6 @@
     "quota_ring_radius": 62,
     "hardware_ring_width": 11,
     "quota_ring_width": 8,
-    "show_reset_times": false
+    "show_reset_times": true
   }
 }

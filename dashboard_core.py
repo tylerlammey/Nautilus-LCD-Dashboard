@@ -26,7 +26,7 @@ DEFAULT_CONFIG = {"theme": PALETTES["electric"].copy(), "remaining": True,
                              "label_font_size": 24, "quota_font_size": 34,
                              "quota_label_font_size": 19, "hardware_ring_radius": 85,
                              "quota_ring_radius": 62, "hardware_ring_width": 11,
-                             "quota_ring_width": 8, "show_reset_times": False}}
+                             "quota_ring_width": 8, "show_reset_times": True}}
 
 
 def merge_config(patch, base=None):
@@ -163,12 +163,12 @@ def countdown(reset, now=None):
         return ""
     seconds = max(0, int(reset - (time.time() if now is None else now)))
     if seconds == 0:
-        return "RESET DUE"
+        return "0m"
     if seconds >= 86400:
-        return f"{seconds // 86400}d {seconds % 86400 // 3600}h"
+        return f"{seconds // 86400}d"
     if seconds >= 3600:
-        return f"{seconds // 3600}h {seconds % 3600 // 60}m"
-    return f"{max(1, seconds // 60)}m"
+        return f"{seconds // 3600}h"
+    return f"{seconds // 60}m"
 
 
 def render_frame(state, config):
@@ -209,12 +209,12 @@ def render_frame(state, config):
         if percent is not None and config["remaining"]:
             percent = 100-percent
         ring(x,365,layout["quota_ring_radius"],percent,theme["ai"],layout["quota_ring_width"])
+        if quota and layout["show_reset_times"]:
+            label = countdown(quota.get("resets_at")) or label
         # Keep stale data identifiable without a header or footer.
         label += "*" if state.get("quota_stale") else ""
         text(label,x,343,layout["quota_label_font_size"],muted)
         text(f"{percent:.0f}%" if percent is not None else "—",x,383,layout["quota_font_size"],theme["ai"],True)
-        if quota and layout["show_reset_times"]:
-            text(countdown(quota.get("resets_at")),x,445,17,muted)
     return image.resize((480,480),Image.Resampling.LANCZOS)
 
 

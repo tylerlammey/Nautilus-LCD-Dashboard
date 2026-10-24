@@ -85,8 +85,12 @@ class CoreTests(unittest.TestCase):
 
     def test_reset_is_not_fabricated(self):
         self.assertEqual(countdown(None),"")
-        self.assertEqual(countdown(99,100),"RESET DUE")
-        self.assertEqual(countdown(100+3*86400+6*3600,100),"3d 6h")
+        self.assertEqual(countdown(99,100),"0m")
+        for seconds, expected in [(0,"0m"),(59,"0m"),(60,"1m"),(3599,"59m"),
+                                  (3600,"1h"),(4.9*3600,"4h"),(86399,"23h"),
+                                  (86400,"1d"),(3*86400+6*3600,"3d")]:
+            with self.subTest(seconds=seconds):
+                self.assertEqual(countdown(100+seconds,100),expected)
 
 
 if __name__=="__main__":

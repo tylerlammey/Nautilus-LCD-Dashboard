@@ -15,6 +15,7 @@ five-hour quota 68% remaining. Green indicates an active local Codex session.*
 - Large CPU/GPU temperatures, with usage percentages below the gauges.
 - Temperature rings: empty at 20°C, halfway at 60°C, full at 100°C.
 - Weekly quota on the left; five-hour quota on the right. Remaining is the default.
+- Reset countdown labels show the largest unit, rounded down: `3d`, `4h`, or `27m`.
 - Green/gray/amber activity dot for working, idle, or unavailable status.
 - Live JSON settings for colors, fonts, ring sizes, brightness, and rotation.
 - Start/Stop scripts, desktop icons, and USB reconnect.
@@ -112,7 +113,8 @@ are in [settings.example.json](settings.example.json).
 This partial example uses defaults for omitted settings. Rotation accepts 0,
 90, 180, or 270 degrees; brightness accepts 33–100. Set `remaining` to `false`
 for quota used. The `layout` block controls fonts, ring sizes and thicknesses,
-and optional reset countdowns. Set `codex_activity.enabled` to `false` to hide
+and reset countdown labels. Set `layout.show_reset_times` to `false` to restore
+the `WEEK` and `5H` labels. Set `codex_activity.enabled` to `false` to hide
 the dot, or `lcd_enabled` to `false` to pause screen output.
 
 Readings outside the temperature range clamp the ring fill; the numeric
