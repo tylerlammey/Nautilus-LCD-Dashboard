@@ -15,7 +15,7 @@ five-hour quota 68% remaining. Green indicates an active local Codex session.*
 - Large CPU/GPU temperatures, with usage percentages below the gauges.
 - Temperature rings: empty at 20°C, halfway at 60°C, full at 100°C.
 - Weekly quota on the left; five-hour quota on the right. Remaining is the default.
-- Reset countdown labels show days, hours and minutes, or minutes: `3d`, `4h 59m`, or `27m`. Whole hours show as `5h`; seconds are rounded down.
+- Reset countdown labels show days and hours, hours and minutes, or minutes: `3d 6h`, `4h 59m`, or `27m`. Zero trailing units are omitted; smaller units are rounded down.
 - Green/gray/amber activity dot for working, idle, or unavailable status.
 - Live JSON settings for colors, fonts, ring sizes, brightness, and rotation.
 - Start/Stop scripts, desktop icons, and USB reconnect.

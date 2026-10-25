@@ -165,7 +165,8 @@ def countdown(reset, now=None):
     if seconds == 0:
         return "0m"
     if seconds >= 86400:
-        return f"{seconds // 86400}d"
+        days, hours = seconds // 86400, seconds % 86400 // 3600
+        return f"{days}d {hours}h" if hours else f"{days}d"
     if seconds >= 3600:
         hours, minutes = seconds // 3600, seconds % 3600 // 60
         return f"{hours}h {minutes}m" if minutes else f"{hours}h"

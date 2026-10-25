@@ -90,7 +90,9 @@ class CoreTests(unittest.TestCase):
                                   (3600,"1h"),(4.9*3600,"4h 54m"),
                                   (5*3600,"5h"),(5*3600-1,"4h 59m"),
                                   (86399,"23h 59m"),
-                                  (86400,"1d"),(3*86400+6*3600,"3d")]:
+                                  (86400,"1d"),(86400+3599,"1d"),
+                                  (86400+3600,"1d 1h"),
+                                  (3*86400+6*3600+59*60,"3d 6h")]:
             with self.subTest(seconds=seconds):
                 self.assertEqual(countdown(100+seconds,100),expected)
 
